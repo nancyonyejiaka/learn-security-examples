@@ -1,1 +1,31 @@
-Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+### Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The session token is a key resource in the system. In the insecure version, is vulnerable 
+to malicious users gaining access to the token, and posing as a authorized user.
+
+Also, in the insecure version, token are generated for every request, which creates other
+vulnerabilities. For example, suppose an authorized user is logged in and the session is active.
+A malicious attacker may find access to the session via malware. The malware may include mechanisms
+to hit sensitive endpoints in the system. When these endpoints are hit, the token is generated,
+giving the attacker the opportunity to access the token.
+
+The secure version presents this by utilizing secure authentication. This involves properly
+configuring the session and its cookies and secrets. The httpOnly constraint ensures that the cookies are only
+accessible from the origin and cannot be read using the Document.cookie API. This adds a layer of
+security to the cookies and how they can be accessed. This ensures that only authorized users can
+access the cookie. The sameSite constraint ensures that the requests to endpoints can only be sent 
+from the correct origin (localhost:8000). The prevents malicious users from hitting sensitive endpoints 
+through malware.
+
+### Which CIA properties do you think Spoofing violates?
+
+Spoofing violates the CIA property of of confidentiality. Cookies and tokens are sensitive
+information, and spoofing allows unauthorized and malicious users the opportunity to access
+this information.
+
+Spoofing also violates the property of integrity. Through the use of malware, sensitive data like
+cookies and tokens can be forged through Cross-site Request Forgery (CSRF).
+
+
+
+

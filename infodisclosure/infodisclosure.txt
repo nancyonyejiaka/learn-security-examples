@@ -1,3 +1,20 @@
-Briefly explain the vulnerability and why the secure version prevents the vulnerability.
-Which CIA property does tampering violate?
-What additional security mechanisms can you incorporate?
+### Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The insecure version of the system is vulnerable to NoSQL injection attacks. The database of
+users is queried based on unsanitized user input via the username. This allows malicious users
+to input scripts that could reveal sensitive information in the database.
+
+The secure version sanitizes the input before running it in the database.
+
+
+### Which CIA property does tampering violate?
+This violates the property of confidentiality. When the NoSQL injections are run, sensitive
+information from the database is revealed.
+
+This violates the property of availability because the NoSQL injection could result in the deletion
+of data, which would make it unavailable to users when they need it.
+
+### What additional security mechanisms can you incorporate?
+We could also incorporate protective measure of the the database, which would protect it from
+NoSQL injections.
+

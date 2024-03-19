@@ -1,0 +1,17 @@
+### Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+The insecure version of the system does not properly sanitized and validate user inputs. As a
+result, the system always assumes the user input is a String, when in reality, it could
+be code snippets or scripts that could be injected into the server-side system and expose 
+sensitive data.
+
+
+The secure version of the system prevents the vulnerability by converting the user input into
+Strings. This involved removing special characters and replacing them with their String equivalents, 
+which would prevent the script or code snippets from being injected into the server-side.
+
+
+### Which CIA property does tampering violate?
+Tampering violates the CIA property of integrity. Cross-site scripting attacks (XSS), change and
+corrupt the data in the system when attacker-run inputs are not properly sanitized and allowed to execute.
+
+
