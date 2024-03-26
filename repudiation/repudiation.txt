@@ -1,2 +1,21 @@
-- Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
-- What additional security mechanisms can you incorporate to prevent such attacks?
+### Briefly explain the vulnerability and why the secure version is better at preventing 
+repudiation than the insecure version.
+
+The insecure version of the system has no way of associating requests with the users that
+performed them.
+
+The secure version of the system includes middleware for logging requests. For each incoming
+request, the middleware will log the date, method, url, and id for the each request. These
+logs are added to a files that is secure and private. If the action of writing the error to
+the log fails, there is also middleware for handling errors. This ensures that there are no
+denial of service concerns.
+
+
+### What additional security mechanisms can you incorporate to prevent such attacks?
+
+Instead of storing the logs in the file system, we should store in mongoDB. This ensures
+the logs are accessible, but means it may take more time to access the logs and decrease
+the performance of the system.
+
+We could also incorporate audit policies that find patterns in the logs and could point out
+any potential issues with endpoints.

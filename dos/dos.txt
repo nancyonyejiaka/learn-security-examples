@@ -1,2 +1,12 @@
-- Briefly explain the vulnerability and why the secure version prevents the vulnerability.
-- What additional security mechanisms can you incorporate to prevent such attacks?
+### Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+The insecure version of the system executed a findOne query baded on the id field. This id
+comes directly from user input, which could potentially be an attack.
+
+The secure version add error handling to catch errors that are thrown by the query, rather
+than letting invalid inputs crash the system.
+
+### What additional security mechanisms can you incorporate to prevent such attacks?
+We should also sanitize the user input, even if mongoDB already has safeguards for the id field.
+
+We should also incorporate rate-limiting middleware to limit requests that come to the server
+for a specific period of time.

@@ -1,0 +1,16 @@
+### Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The insecure version of the system takes in a userId and the newRole for the user. This means
+that attackers can enter the userId of a admin and downgrade their role to a regular user.
+
+The secure version of the system user the userId that is provided by the session, instead of
+an Id coming directly from the user. This ensures that the role update only happens if there
+is a valid session that we trust.
+
+
+### What additional security mechanisms can you incorporate to prevent such attacks?
+
+We can define the endpoint in a way that only admin users can access it.
+
+We can also incorporate 2FA so that the data is verified not only by the session id
+but also by the token.
